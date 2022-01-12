@@ -1,0 +1,11 @@
+import std.stdio;
+
+import core.sys.windows.windows;
+import core.runtime;
+void main()
+{
+  HMODULE h = cast(HMODULE)Runtime.loadLibrary("realmgame.dll");
+  FARPROC fp = GetProcAddress(h,"realm_main");
+  auto fun = cast(void function()) fp;
+  fun();
+}
